@@ -7,7 +7,7 @@ Move that folder into your modules directory and activate in your bootstrap.
 
 ## Please help me! Update readme and add methods description
 
-## Examples
+### Examples
 
 Message::notice(array('a' => 'test', 'b' => 'test B!'));
 
