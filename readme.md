@@ -5,7 +5,7 @@ Uses cookies to store messages.
 To use, download the source, extract and rename to message. 
 Move that folder into your modules directory and activate in your bootstrap.
 
-### Examples:
+### Usage:
 
 Instance message object:
 <pre>
