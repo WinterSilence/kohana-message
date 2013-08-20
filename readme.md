@@ -8,48 +8,64 @@ Move that folder into your modules directory and activate in your bootstrap.
 ### Examples:
 
 Instance message object:
-	$message = Message::instance();
+<pre>
+$message = Message::instance();
+</pre>
 
 Config properties:
-	Message::$cookie_key = 'flash_message';
-	// Auto translate with using Kohana::message
-	Message::$translate = FALSE;
-	// Filename translation in `messages` folder
-	Message::$translation_file = 'flash_message';
+<pre>
+Message::$cookie_key = 'flash_message';
+// Auto translate with using Kohana::message
+Message::$translate = FALSE;
+// Filename translation in `messages` folder
+Message::$translation_file = 'flash_message';
+</pre>
 
 Constant message types:
-	Message::ERROR;
-	Message::NOTICE;
-	Message::INFO;
-	Message::SUCCESS;
+<pre>
+Message::ERROR;
+Message::NOTICE;
+Message::INFO;
+Message::SUCCESS;
+</pre>
 
 Sending a message:
-	$message->set(Message::SUCCESS, 'User info is updated');
-	// Short version
-	$message->success('User info is updated');
-	// Set second param in try for translate, uses Kohana::message
-	$message->error('Invalid CAPCHA value', TRUE);
-	// Can send array of messages
-	$message->error($validation->errors('user'));
+<pre>
+$message->set(Message::SUCCESS, 'User info is updated');
+// Short version
+$message->success('User info is updated');
+// Set second param in try for translate, uses Kohana::message
+$message->error('Invalid CAPCHA value', TRUE);
+// Can send array of messages
+$message->error($validation->errors('user'));
+</pre>
 
 Gets a message:
-	Debug::dump($message->get()); 
-	// return: array('a' => 'Message A', 'b' => 'Message B')
-	echo $message->get('a'); 
-	// Short version
-	echo $message->a;
+<pre>
+Debug::dump($message->get()); 
+// return: array('a' => 'Message A', 'b' => 'Message B')
+echo $message->get('a'); 
+// Short version
+echo $message->a;
+</pre>
 
 Get message type:
-	echo $message->type();
+<pre>
+echo $message->type();
+</pre>
 
 Checks:
-	echo (is_array($message->get()) ? 'yes' : 'no');
-	echo (isset($message->b) ? 'yes' : 'no');
+<pre>
+echo (is_array($message->get()) ? 'yes' : 'no');
+echo (isset($message->b) ? 'yes' : 'no');
+</pre>
 
 The alternative use - static methods:
-	Message::set(Message::SUCCESS, 'User info is updated');
-	Message::notice('Cleanup started');
-	echo Message::get('a');
-	echo Message::type();
+<pre>
+Message::set(Message::SUCCESS, 'User info is updated');
+Message::notice('Cleanup started');
+echo Message::get('a');
+echo Message::type();
+</pre>
 
-## Please help me! Add methods description.
+### Please help me! Add methods description.
