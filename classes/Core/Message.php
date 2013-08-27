@@ -2,15 +2,20 @@
 /**
  * Message is a class that lets you easily send messages
  * in your application (aka Flash Messages). They are stored in cookie.
- *
+ * 
+ * @abstract
  * @package    Kohana/Message
+ * @category   Base
+ * @author     WinterSilence <info@handy-soft.ru>
+ * @copyright  2013 © handy-soft.ru
+ * @license    http://kohanaframework.org/license
  * @link       http://github.com/WinterSilence/kohana-message
- * @author     WinterSilence
- * @copyright  2013 © WinterSilence
  */
 abstract class Core_Message
 {
-	// Types of message
+	/**
+	 * Types of message
+	 */
 	const ERROR   = 'error';
 	const NOTICE  = 'notice';
 	const INFO    = 'info';
@@ -18,44 +23,50 @@ abstract class Core_Message
 
 	/**
 	 * Message instance
-	 * @var  Message
+	 * @static
+	 * @var Message
 	 */
 	protected static $_instance = NULL;
 
 	/**
 	 * Auto translate message using Kohana::message
-	 * @var  string
+	 * @static
+	 * @var string
 	 */
 	public static $cookie_key = 'flash_message';
 
 	/**
 	 * Auto translate message using Kohana::message
-	 * @var  boolean
+	 * @static
+	 * @var boolean
 	 */
 	public static $translate = FALSE;
 
 	/**
 	 * Filename translation in `messages/` folder
-	 * @var  string
+	 * @static
+	 * @var string
 	 */
 	public static $translation_file = 'flash_message';
 
 	/**
 	 * Message items
-	 * @var  array
+	 * @var array
 	 */
 	protected $_data = array();
 
 	/**
 	 * Message type
-	 * @var  string
+	 * @var string
 	 */
 	protected $_type = self::ERROR;
 
 	/**
 	 * Get instance Message
 	 * 
-	 * @return  Message
+	 * @static
+	 * @access public
+	 * @return Message
 	 */
 	public static function instance()
 	{
@@ -70,9 +81,10 @@ abstract class Core_Message
 	/**
 	 * Class constructor protected from external call
 	 *
-	 * @return  void
-	 * @uses    Cookie::get
-	 * @uses    Cookie::delete
+	 * @access protected
+	 * @return void
+	 * @uses   Cookie::get
+	 * @uses   Cookie::delete
 	 */
 	protected function __construct()
 	{
@@ -86,13 +98,15 @@ abstract class Core_Message
 	/**
 	 * Clone method protected from external call
 	 * 
-	 * @return  void
+	 * @access protected
+	 * @return void
 	 */
 	protected function __clone(){}
 
 	/**
 	 * Wakeup method protected from external call
 	 * 
+	 * @access protected
 	 * @return void
 	 */
 	protected function __wakeup(){}
@@ -100,12 +114,13 @@ abstract class Core_Message
 	/**
 	 * Send new message
 	 * 
-	 * @param   string   $type       
-	 * @param   mixed    $message    Array or string
-	 * @param   mixed    $translate  Translate message?
-	 * @return  Message
-	 * @uses    Kohana::message
-	 * @uses    Cookie::set
+	 * @access protected
+	 * @param  string $type      Message type 
+	 * @param  mixed  $message   Array or string
+	 * @param  mixed  $translate Translate message?
+	 * @return Message
+	 * @uses   Kohana::message
+	 * @uses   Cookie::set
 	 */
 	protected function _set($type, $message = NULL, $translate = NULL)
 	{
@@ -140,10 +155,11 @@ abstract class Core_Message
 
 	/**
 	 * Send new error message. Wrapper for Message::_set
-	 *     
-	 * @param   mixed    $message    Array or string
-	 * @param   mixed    $translate  Translate message?
-	 * @return  Message
+	 *   
+	 * @access protected
+	 * @param  mixed    $message    Array or string
+	 * @param  mixed    $translate  Translate message?
+	 * @return Message
 	 */
 	protected function _error($message, $translate = NULL)
 	{
@@ -153,9 +169,10 @@ abstract class Core_Message
 	/**
 	 * Send new note message. Wrapper for Message::_set
 	 *     
-	 * @param   mixed    $message    Array or string
-	 * @param   mixed    $translate  Translate message?
-	 * @return  Message
+	 * @access protected
+	 * @param  mixed $message   Array or string
+	 * @param  mixed $translate Translate message?
+	 * @return Message
 	 */
 	protected function _notice($message, $translate = NULL)
 	{
@@ -165,9 +182,10 @@ abstract class Core_Message
 	/**
 	 * Send new info message. Wrapper for Message::_set
 	 *     
-	 * @param   mixed    $message    Array or string
-	 * @param   mixed    $translate  Translate message?
-	 * @return  Message
+	 * @access protected
+	 * @param  mixed $message   Array or string
+	 * @param  mixed $translate Translate message?
+	 * @return Message
 	 */
 	protected function _info($message, $translate = NULL)
 	{
@@ -177,9 +195,10 @@ abstract class Core_Message
 	/**
 	 * Send new success message. Wrapper for Message::_set
 	 *     
-	 * @param   mixed    $message    Array or string
-	 * @param   mixed    $translate  Translate message?
-	 * @return  Message
+	 * @access protected
+	 * @param  mixed $message   Array or string
+	 * @param  mixed $translate Translate message?
+	 * @return Message
 	 */
 	protected function _success($message, $translate = NULL)
 	{
@@ -189,8 +208,9 @@ abstract class Core_Message
 	/**
 	 * Gets messages
 	 *     
-	 * @param   mixed  $key
-	 * @return  mixed
+	 * @access protected
+	 * @param  mixed  $key
+	 * @return mixed
 	 */
 	protected function _get($key = NULL)
 	{
@@ -207,8 +227,9 @@ abstract class Core_Message
 	/**
 	 * Gets or sets message type
 	 *
-	 * @param   mixed  $value
-	 * @return  mixed
+	 * @access protected
+	 * @param  mixed $value
+	 * @return mixed
 	 */
 	protected function _type($value = NULL)
 	{
@@ -223,10 +244,11 @@ abstract class Core_Message
 	/**
 	 * Triggered when invoking inaccessible methods in an object context.
 	 *
-	 * @param   string  $name
-	 * @param   array   $arguments
-	 * @return  mixed
-	 * @throw   Kohana_Exception
+	 * @access public
+	 * @param  string $name
+	 * @param  array  $arguments
+	 * @return mixed
+	 * @throw  Kohana_Exception
 	 */
 	public function __call($name, $arguments)
 	{
@@ -241,10 +263,11 @@ abstract class Core_Message
 	/**
 	 * Triggered when invoking inaccessible methods in a static context. 
 	 *
-	 * @param   string  $name
-	 * @param   array   $arguments
-	 * @return  mixed
-	 * @throw   Kohana_Exception
+	 * @access public
+	 * @param  string $name
+	 * @param  array  $arguments
+	 * @return mixed
+	 * @throw  Kohana_Exception
 	 */
 	public static function __callStatic($name, $arguments)
 	{
@@ -259,8 +282,9 @@ abstract class Core_Message
 	/**
 	 * Utilized for reading data from inaccessible properties. 
 	 *
-	 * @param   string  $name
-	 * @return  mixed
+	 * @access public
+	 * @param  string $name
+	 * @return mixed
 	 */
 	public function __get($name)
 	{
@@ -270,8 +294,9 @@ abstract class Core_Message
 	/**
 	 * Triggered by calling isset() or empty() on inaccessible properties. 
 	 *
-	 * @param   string  $name
-	 * @return  bool
+	 * @access public
+	 * @param  string $name
+	 * @return bool
 	 */
 	public function __isset($name)
 	{
@@ -281,7 +306,8 @@ abstract class Core_Message
 	/**
 	 * Allows a class to decide how it will react when it is treated like a string.
 	 * 
-	 * @return  string
+	 * @access public
+	 * @return string
 	 */
 	public function __toString()
 	{
