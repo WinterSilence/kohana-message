@@ -1,4 +1,4 @@
-### Flash messaging system for Kohana framework 3.3
+### Flash\short messaging system for Kohana framework 3.3
 
 Uses cookies to store messages.
 
@@ -67,5 +67,3 @@ Message::notice('Cleanup started');
 echo Message::get('a');
 echo Message::type();
 </pre>
-
-### Please help me! Add methods description.
